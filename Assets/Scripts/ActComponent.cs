@@ -41,9 +41,9 @@ public class ActComponent
     /// OnGUI刷新
     /// </summary>
     public bool isDown;
-    public virtual void ShowOnGUI()
+    public virtual bool ShowOnGUI()
     {
-
+        return false;
     }
 
 }

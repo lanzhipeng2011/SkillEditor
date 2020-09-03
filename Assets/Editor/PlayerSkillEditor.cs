@@ -61,9 +61,11 @@ public class PlayerSkillEditor : EditorWindow
             player.Add((ActType)componentIndex);
         }
         GUILayout.EndHorizontal();
+
         foreach (var item in player.actComponet.Values)
         {
-            item.ShowOnGUI();
+            if (item.ShowOnGUI())
+                break;
         }
     }
 }

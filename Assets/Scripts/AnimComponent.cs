@@ -20,19 +20,23 @@ public class AnimComponent : ActComponent
         player.animator.SetTrigger(animName[animIndex]);
     }
 
-    public override void ShowOnGUI()
+    public override bool ShowOnGUI()
     {
         isDown = EditorGUILayout.Foldout(isDown, "动画组件");
         if (isDown)
         {
-            return;
+            return false;
         }
         animIndex = EditorGUILayout.Popup("动画片段", animIndex, animName);
         if (GUILayout.Button("移除"))
-        { 
-            if(player.actComponet.ContainsKey(ActType.Anim))
+        {
+            if (player.actComponet.ContainsKey(ActType.Anim))
+            {
                 player.actComponet.Remove(ActType.Anim);
+                return true;
+            }
         }
+        return false;
     }
 
     public override void Stop()

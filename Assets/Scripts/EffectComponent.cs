@@ -16,13 +16,13 @@ public class EffectComponent : ActComponent
     int effectPosIndex = 0;
     GameObject _FX = null;//特效
 
-    public override void ShowOnGUI()
+    public override bool ShowOnGUI()
     {
         GUILayout.BeginVertical();
         isDown = EditorGUILayout.Foldout(isDown, "特效组件");
         if (isDown)
         {
-            return;
+            return false;
         }
         animIndex = EditorGUILayout.Popup("特效类型", animIndex, animName);
         
@@ -30,8 +30,11 @@ public class EffectComponent : ActComponent
         if (GUILayout.Button("移除"))
         {
             player.actComponet.Remove(ActType.Effect);
+            return true;
         }
         GUILayout.EndVertical();
+
+        return false;
     }
     public override void Play()
     {

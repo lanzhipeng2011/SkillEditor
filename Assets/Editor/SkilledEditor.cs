@@ -11,8 +11,14 @@ public class SkilledEditor : EditorWindow
     [MenuItem("技能编辑器/SkilledEditor")]
     public static void SkillEditorWindow()
     {
-        skillEditor = GetWindow<SkilledEditor>("SkillEditor");
-        skillEditor.Show();
+        if (Application.isPlaying)
+        {
+            skillEditor = GetWindow<SkilledEditor>("SkillEditor");
+            skillEditor.Show();
+        }
+        else {
+            Debug.Log("使用技能编辑器需使Unity处于运行中......");
+        }
     }
 
     private static PlayerSkillEditor playerSkillEditor;
